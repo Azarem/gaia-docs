@@ -53,7 +53,7 @@ export default async function ModelPage({ params }: { params: Promise<{ model: s
     return (
       <div className="mx-auto max-w-3xl px-6 py-16">
         <h1 className="text-2xl font-bold">Model not found</h1>
-        <p className="mt-2 text-muted-foreground">No model named "{model}" in generated schema.</p>
+        <p className="mt-2 text-muted-foreground">No model named &quot;{model}&quot; in generated schema.</p>
       </div>
     );
   }
@@ -107,9 +107,9 @@ export default async function ModelPage({ params }: { params: Promise<{ model: s
         <h2 className="text-xl font-semibold text-foreground">cURL Example</h2>
         <div className="mt-3 rounded-lg bg-muted p-4">
           <code className="text-sm text-foreground">
-            curl "{endpoint}?select=*" \<br />
-            &nbsp;&nbsp;-H "apikey: sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV" \<br />
-            &nbsp;&nbsp;-H "Authorization: Bearer sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV"
+            curl &quot;{endpoint}?select=*&quot; \<br />
+            &nbsp;&nbsp;-H &quot;apikey: sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV&quot; \<br />
+            &nbsp;&nbsp;-H &quot;Authorization: Bearer sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV&quot;
           </code>
         </div>
       </div>

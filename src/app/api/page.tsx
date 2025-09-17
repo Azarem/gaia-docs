@@ -72,9 +72,9 @@ export default function APIReferencePage() {
           </p>
           <div className="mt-3 rounded-lg bg-muted p-4">
             <code className="text-sm text-foreground">
-              curl "{supabaseBase}/Project" \<br />
-              &nbsp;&nbsp;-H "apikey: sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV" \<br />
-              &nbsp;&nbsp;-H "Authorization: Bearer sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV"
+              curl &quot;{supabaseBase}/Project&quot; \<br />
+              &nbsp;&nbsp;-H &quot;apikey: sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV&quot; \<br />
+              &nbsp;&nbsp;-H &quot;Authorization: Bearer sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV&quot;
             </code>
           </div>
           <div className="mt-4">
@@ -139,9 +139,9 @@ export default function APIReferencePage() {
           </p>
           <div className="mt-3 rounded-lg bg-muted p-4">
             <code className="text-sm text-foreground">
-              curl "{supabaseBase}/Project?select=*&order=updatedAt.desc" \<br />
-              &nbsp;&nbsp;-H "apikey: sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV" \<br />
-              &nbsp;&nbsp;-H "Authorization: Bearer sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV"
+              curl &quot;{supabaseBase}/Project?select=*&order=updatedAt.desc&quot; \<br />
+              &nbsp;&nbsp;-H &quot;apikey: sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV&quot; \<br />
+              &nbsp;&nbsp;-H &quot;Authorization: Bearer sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV&quot;
             </code>
           </div>
         </div>

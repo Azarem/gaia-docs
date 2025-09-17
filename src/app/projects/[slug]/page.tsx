@@ -43,7 +43,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     return (
       <div className="mx-auto max-w-3xl px-6 py-16">
         <h1 className="text-2xl font-bold">Project not found</h1>
-        <p className="mt-2 text-muted-foreground">No project with slug "{slug}"</p>
+        <p className="mt-2 text-muted-foreground">No project with slug &quot;{slug}&quot;</p>
         <div className="mt-6">
           <Link className="text-primary hover:underline" href="/projects">Back to projects</Link>
         </div>
