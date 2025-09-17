@@ -39,10 +39,10 @@ export async function generateStaticParams() {
   
   for (const project of data.projects as Project[]) {
     if (project.activeBranch?.modules) {
-      for (const module of project.activeBranch.modules) {
+      for (const moduleData of project.activeBranch.modules) {
         params.push({
           slug: project.slug,
-          moduleSlug: module.slug
+          moduleSlug: moduleData.slug
         });
       }
     }
@@ -64,9 +64,9 @@ export default async function ModulePage({
     notFound();
   }
 
-  const module = project.activeBranch?.modules?.find((m) => m.slug === moduleSlug);
+  const moduleData = project.activeBranch?.modules?.find((m) => m.slug === moduleSlug);
 
-  if (!module) {
+  if (!moduleData) {
     notFound();
   }
 
@@ -81,11 +81,11 @@ export default async function ModulePage({
         </Link>
       </div>
 
-      <h1 className="text-3xl font-bold tracking-tight text-foreground">{module.name}</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-foreground">{moduleData.name}</h1>
       <p className="mt-2 text-muted-foreground">Module configuration options</p>
 
       <div className="mt-8 space-y-6">
-        {module.groups.map((group, groupIndex) => (
+        {moduleData.groups.map((group, groupIndex) => (
           <div key={groupIndex} className="rounded-lg border border-border p-4">
             <h2 className="text-lg font-semibold text-foreground">
               {group.name || `Configuration Group ${groupIndex + 1}`}
@@ -131,13 +131,13 @@ export default async function ModulePage({
       <div className="mt-8 rounded-lg border border-border p-4">
         <h2 className="text-lg font-semibold text-foreground">Module Information</h2>
         <div className="mt-2 grid grid-cols-1 gap-2 text-sm">
-          <div>Total Option Groups: {module.groups.length}</div>
-          <div>Total Options: {module.groups.reduce((sum, group) => sum + group.options.length, 0)}</div>
-          <div>Default Options: {module.groups.reduce((sum, group) => sum + group.options.filter(opt => opt.default).length, 0)}</div>
+          <div>Total Option Groups: {moduleData.groups.length}</div>
+          <div>Total Options: {moduleData.groups.reduce((sum, group) => sum + group.options.length, 0)}</div>
+          <div>Default Options: {moduleData.groups.reduce((sum, group) => sum + group.options.filter(opt => opt.default).length, 0)}</div>
           <div>
             Modules Referenced: {
               Array.from(new Set(
-                module.groups.flatMap(group => 
+                moduleData.groups.flatMap(group => 
                   group.options.filter(opt => opt.module).map(opt => opt.module)
                 )
               )).length
