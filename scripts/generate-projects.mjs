@@ -9,15 +9,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { slugify } from './slugify.mjs';
+
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://adwobxutnpmjbmhdxrzx.supabase.co';
 const SUPABASE_ANON = process.env.SUPABASE_ANON || 'sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV';
 
 const OUTPUT_DIR = path.join(process.cwd(), 'src', 'generated');
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'projects.json');
-
-function slugifyName(name) {
-  return encodeURIComponent(name.replace(/\s+/g, ' ').trim());
-}
 
 async function fetchJSON(url) {
   const res = await fetch(url, {
@@ -39,7 +37,7 @@ async function listProjects() {
   return rows.map((p) => ({
     id: p.id,
     name: p.name,
-    slug: slugifyName(p.name),
+    slug: slugify(p.name),
     meta: p.meta ?? null,
     gameId: p.gameId,
     baseRomId: p.baseRomId,

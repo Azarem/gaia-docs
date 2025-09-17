@@ -8,19 +8,19 @@
       "platform": {
         "id": "cmfmf4t8c0000za347p07stzi",
         "name": "SNES",
-        "slug": "SNES"
+        "slug": "snes"
       },
       "game": {
         "id": "cmfmf4tgx0008za34pu5l6fna",
         "name": "Illusion of Gaia",
-        "slug": "Illusion%20of%20Gaia"
+        "slug": "illusion-of-gaia"
       },
       "region": {
         "id": "cmfmf4td70004za34671tza75",
         "name": "US",
-        "slug": "US"
+        "slug": "us"
       },
-      "path": "games/SNES/Illusion%20of%20Gaia/US",
+      "path": "games/snes/illusion-of-gaia/us",
       "branch": {
         "id": "cmfmf4tn9000cza34rhpxv1fp",
         "name": "1.0",

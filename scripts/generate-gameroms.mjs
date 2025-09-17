@@ -10,13 +10,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { slugify } from './slugify.mjs';
+
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://adwobxutnpmjbmhdxrzx.supabase.co';
 const SUPABASE_ANON = process.env.SUPABASE_ANON || 'sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV';
 const OUT_FILE = path.join(process.cwd(), 'src', 'generated', 'gameroms.json');
-
-function slugify(name) {
-  return encodeURIComponent(String(name || '').replace(/\s+/g, ' ').trim());
-}
 
 async function fetchJSON(url) {
   const res = await fetch(url, {

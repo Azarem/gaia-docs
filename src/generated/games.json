@@ -4,10 +4,10 @@
     "fetchedAt": "2025-09-16T23:00:27.822Z"
   },
   "games": {
-    "Illusion%20of%20Gaia": {
+    "illusion-of-gaia": {
       "id": "cmfmf4tgx0008za34pu5l6fna",
       "name": "Illusion of Gaia",
-      "slug": "Illusion%20of%20Gaia",
+      "slug": "illusion-of-gaia",
       "meta": {
         "ramSize": 3,
         "romMode": 49,
