@@ -9,7 +9,7 @@
     "start": "next start -p 3002",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "export": "next build && next export",
+    "export": "next build",
     "generate:schema": "node scripts/generate-schema-docs.mjs",
     "generate:projects": "node scripts/generate-projects.mjs",
     "generate:entities": "node scripts/generate-entities.mjs",
