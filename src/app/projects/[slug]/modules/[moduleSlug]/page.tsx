@@ -35,14 +35,14 @@ type Project = {
 
 export async function generateStaticParams() {
   const data = projectsJson as any;
-  const params: { slug: string; 'module-slug': string }[] = [];
+  const params: { slug: string; moduleSlug: string }[] = [];
   
   for (const project of data.projects as Project[]) {
     if (project.activeBranch?.modules) {
       for (const module of project.activeBranch.modules) {
         params.push({
           slug: project.slug,
-          'module-slug': module.slug
+          moduleSlug: module.slug
         });
       }
     }
@@ -54,9 +54,9 @@ export async function generateStaticParams() {
 export default async function ModulePage({ 
   params 
 }: { 
-  params: Promise<{ slug: string; 'module-slug': string }> 
+  params: Promise<{ slug: string; moduleSlug: string }> 
 }) {
-  const { slug, 'module-slug': moduleSlug } = await params;
+  const { slug, moduleSlug } = await params;
   const data = projectsJson as any;
   const project = (data.projects as Project[]).find((p) => p.slug === slug);
 

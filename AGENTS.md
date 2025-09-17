@@ -88,7 +88,7 @@ Single canonical pattern for games:
 Other pages:
 - `/projects` – list using `projects.json`
 - `/projects/{slug}` – project detail incl. active branch summary with separate cards for Project Branch, Modules, BaseRom Branch, and Platform Branch
-- `/projects/{slug}/modules/{module-slug}` – individual module detail pages with configuration groups and metadata
+- `/projects/{slug}/modules/{moduleSlug}` – individual module detail pages with configuration groups and metadata
 - `/assembly/{platform}` – comprehensive technical documentation for platform assembly programming (addressing modes, instruction set, interrupt vectors)
 - `/api` – Supabase REST overview + generated schema index
 - `/api/{model}` – schema model detail from `schema.json`
@@ -129,7 +129,7 @@ Note: No `games/[slug]` route to avoid conflicts. Only the nested `{platform}/{g
 Project detail pages (`/projects/{slug}`) now use a card-based layout with clear separation of concerns:
 
 - **Project Branch Card**: Version information, file count, and audit timestamps only
-- **Modules Card**: Full module hierarchy with individual module links to `/projects/{slug}/modules/{module-slug}`
+- **Modules Card**: Full module hierarchy with individual module links to `/projects/{slug}/modules/{moduleSlug}`
 - **BaseRom Branch Card**: BaseRom info, version, file count, with separate links for Game and Region (routing to games structure)
 - **Platform Branch Card**: Platform information with link to Assembly Information page
 
