@@ -14,14 +14,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { slugify } from './slugify.mjs';
+
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://adwobxutnpmjbmhdxrzx.supabase.co';
 const SUPABASE_ANON = process.env.SUPABASE_ANON || 'sb_publishable_uBZdKmgGql5sDNGpj1DVMQ_opZ2V4kV';
 
 const OUT_DIR = path.join(process.cwd(), 'src', 'generated');
-
-function slugifyName(name) {
-  return encodeURIComponent(String(name || '').replace(/\s+/g, ' ').trim());
-}
 
 async function fetchJSON(url) {
   const res = await fetch(url, {
@@ -50,7 +48,7 @@ async function genPlatforms() {
     out.push({
       id: p.id,
       name: p.name,
-      slug: slugifyName(p.name),
+      slug: slugify(p.name),
       meta: p.meta ?? null,
       createdAt: p.createdAt,
       updatedAt: p.updatedAt,
@@ -72,7 +70,7 @@ async function genBaseRoms() {
     out.push({
       id: b.id,
       name: b.name,
-      slug: slugifyName(b.name),
+      slug: slugify(b.name),
       gameId: b.gameId,
       gameRomId: b.gameRomId,
       createdAt: b.createdAt,
@@ -110,7 +108,7 @@ async function genGames() {
     out.push({
       id: g.id,
       name: g.name,
-      slug: slugifyName(g.name),
+      slug: slugify(g.name),
       meta: g.meta ?? null,
       platformId: g.platformId,
       developerId: g.developerId ?? null,
@@ -128,7 +126,7 @@ async function genDevelopers() {
   const out = rows.map((d) => ({
     id: d.id,
     name: d.name,
-    slug: slugifyName(d.name),
+    slug: slugify(d.name),
     meta: d.meta ?? null,
     platformId: d.platformId,
     createdAt: d.createdAt,
@@ -143,7 +141,7 @@ async function genRegions() {
   const out = rows.map((r) => ({
     id: r.id,
     name: r.name,
-    slug: slugifyName(r.name),
+    slug: slugify(r.name),
     meta: r.meta ?? null,
     platformId: r.platformId,
     createdAt: r.createdAt,
