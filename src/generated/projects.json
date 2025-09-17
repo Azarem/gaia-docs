@@ -1,7 +1,7 @@
 {
   "source": {
     "url": "https://adwobxutnpmjbmhdxrzx.supabase.co/rest/v1/Project",
-    "fetchedAt": "2025-09-17T04:50:23.933Z"
+    "fetchedAt": "2025-09-17T05:11:34.397Z"
   },
   "projects": [
     {
@@ -44,7 +44,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "slug": "title-screen"
           },
           {
             "name": "🏯 JP Content",
@@ -133,7 +134,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "slug": "jp-content"
           },
           {
             "name": "⚡ Quality of Life",
@@ -220,7 +222,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "slug": "quality-of-life"
           },
           {
             "name": "📚 Cut Content",
@@ -250,7 +253,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "slug": "cut-content"
           },
           {
             "name": "✨ Extras",
@@ -311,7 +315,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "slug": "extras"
           }
         ],
         "fileCount": 118,
@@ -337,11 +342,13 @@
           "version": 1,
           "game": {
             "id": "cmfmf4tgx0008za34pu5l6fna",
-            "name": "Illusion of Gaia"
+            "name": "Illusion of Gaia",
+            "slug": "illusion-of-gaia"
           },
           "region": {
             "id": "cmfmf4td70004za34671tza75",
-            "name": "US"
+            "name": "US",
+            "slug": "us"
           }
         },
         "platformBranch": {

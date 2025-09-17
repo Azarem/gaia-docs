@@ -114,7 +114,10 @@ async function fetchActiveProjectBranch(projectId) {
     id: branch.id,
     name: branch.name ?? null,
     version: branch.version ?? null,
-    modules: branch.modules ?? [],
+    modules: Array.isArray(branch.modules) ? branch.modules.map(module => ({
+      ...module,
+      slug: slugify(module.name)
+    })) : [],
     fileCount: Array.isArray(branch.fileCrcs) ? branch.fileCrcs.length : 0,
     createdAt: branch.createdAt,
     updatedAt: branch.updatedAt,
@@ -139,8 +142,8 @@ async function fetchActiveProjectBranch(projectId) {
           id: gameRomBranch.id,
           name: gameRomBranch.name ?? null,
           version: gameRomBranch.version ?? null,
-          game: game ? { id: game.id, name: game.name } : null,
-          region: region ? { id: region.id, name: region.name } : null,
+          game: game ? { id: game.id, name: game.name, slug: slugify(game.name) } : null,
+          region: region ? { id: region.id, name: region.name, slug: slugify(region.name) } : null,
         }
       : null,
     platformBranch: platformBranch

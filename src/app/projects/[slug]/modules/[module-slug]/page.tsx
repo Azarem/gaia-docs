@@ -1,20 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import projectsJson from '@/generated/projects.json';
-// Import slugify function locally since module path is too complex
-function slugify(value) {
-  const normalized = String(value ?? '')
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase();
-
-  const hyphenated = normalized
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/-{2,}/g, '-')
-    .replace(/^-+|-+$/g, '');
-
-  return hyphenated;
-}
 
 export const dynamic = 'force-static';
 
@@ -32,6 +18,7 @@ type ModuleGroup = {
 
 type Module = {
   name: string;
+  slug: string;
   groups: ModuleGroup[];
 };
 
@@ -55,7 +42,7 @@ export async function generateStaticParams() {
       for (const module of project.activeBranch.modules) {
         params.push({
           slug: project.slug,
-          'module-slug': slugify(module.name)
+          'module-slug': module.slug
         });
       }
     }
@@ -77,7 +64,7 @@ export default async function ModulePage({
     notFound();
   }
 
-  const module = project.activeBranch?.modules?.find((m) => slugify(m.name) === moduleSlug);
+  const module = project.activeBranch?.modules?.find((m) => m.slug === moduleSlug);
 
   if (!module) {
     notFound();
@@ -103,6 +90,39 @@ export default async function ModulePage({
             <h2 className="text-lg font-semibold text-foreground">
               {group.name || `Configuration Group ${groupIndex + 1}`}
             </h2>
+            <div className="mt-4 space-y-3">
+              {group.options.map((option, optionIndex) => (
+                <div 
+                  key={optionIndex} 
+                  className={`p-3 rounded-md border ${
+                    option.default 
+                      ? 'border-primary bg-primary/5' 
+                      : 'border-border bg-background'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-medium text-foreground">
+                      {option.name}
+                      {option.default && (
+                        <span className="ml-2 text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded">
+                          default
+                        </span>
+                      )}
+                    </h3>
+                    {option.module && (
+                      <span className="text-xs text-muted-foreground font-mono bg-muted px-2 py-1 rounded">
+                        {option.module}
+                      </span>
+                    )}
+                  </div>
+                  {option.description && (
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {option.description}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>

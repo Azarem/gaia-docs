@@ -1,19 +1,5 @@
 import Link from 'next/link';
 import projectsJson from '@/generated/projects.json';
-// Import slugify function locally since module path is complex
-function slugify(value) {
-  const normalized = String(value ?? '')
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase();
-
-  const hyphenated = normalized
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/-{2,}/g, '-')
-    .replace(/^-+|-+$/g, '');
-
-  return hyphenated;
-}
 
 export const dynamic = 'force-static';
 
@@ -31,6 +17,7 @@ type ModuleGroup = {
 
 type Module = {
   name: string;
+  slug: string;
   groups: ModuleGroup[];
 };
 
@@ -55,8 +42,8 @@ type BranchSummary = {
     id: string; 
     name: string | null; 
     version: number | null; 
-    game?: { id: string; name: string }; 
-    region?: { id: string; name: string } 
+    game?: { id: string; name: string; slug: string }; 
+    region?: { id: string; name: string; slug: string } 
   } | null;
   platformBranch?: { 
     id: string; 
@@ -147,30 +134,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   <div key={moduleIndex} className="border-l-2 border-muted-foreground/20 pl-4">
                     <h3 className="font-medium text-foreground">
                       <Link 
-                        href={`/projects/${project.slug}/modules/${slugify(module.name)}`}
+                        href={`/projects/${project.slug}/modules/${module.slug}`}
                         className="hover:underline text-primary"
                       >
                         {module.name}
                       </Link>
                     </h3>
-                    <div className="mt-2 space-y-2">
+                    <div className="mt-2 text-sm text-muted-foreground">
+                      {module.groups.length} group{module.groups.length !== 1 ? 's' : ''}, {module.groups.reduce((sum, group) => sum + group.options.length, 0)} option{module.groups.reduce((sum, group) => sum + group.options.length, 0) !== 1 ? 's' : ''}
+                    </div>
+                    <div className="mt-2 space-y-1">
                       {module.groups?.map((group, groupIndex) => (
-                        <div key={groupIndex} className="text-sm">
-                          {group.name && (
-                            <div className="font-medium text-muted-foreground">{group.name}</div>
-                          )}
-                          <div className="ml-2 space-y-1">
-                            {group.options?.map((option, optionIndex) => (
-                              <div key={optionIndex} className="text-xs">
-                                <span className={option.default ? 'font-medium text-foreground' : 'text-muted-foreground'}>
-                                  {option.name} {option.default && '(default)'}
-                                </span>
-                                {option.description && (
-                                  <span className="ml-2 text-muted-foreground">— {option.description}</span>
-                                )}
-                              </div>
-                            ))}
-                          </div>
+                        <div key={groupIndex} className="text-xs text-muted-foreground">
+                          {group.name || `Group ${groupIndex + 1}`}
                         </div>
                       ))}
                     </div>
@@ -200,7 +176,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 {branch.gameRomBranch?.game && (
                   <div>Game: 
                     <Link 
-                      href={`/games/${branch.platformBranch?.platform?.slug}/${slugify(branch.gameRomBranch.game.name)}`}
+                      href={`/games/${branch.platformBranch?.platform?.slug}/${branch.gameRomBranch.game.slug}`}
                       className="ml-1 text-primary hover:underline"
                     >
                       {branch.gameRomBranch.game.name}
@@ -210,7 +186,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 {branch.gameRomBranch?.region && branch.gameRomBranch?.game && branch.platformBranch?.platform && (
                   <div>Region: 
                     <Link 
-                      href={`/games/${branch.platformBranch.platform.slug}/${slugify(branch.gameRomBranch.game.name)}/${slugify(branch.gameRomBranch.region.name)}`}
+                      href={`/games/${branch.platformBranch.platform.slug}/${branch.gameRomBranch.game.slug}/${branch.gameRomBranch.region.slug}`}
                       className="ml-1 text-primary hover:underline"
                     >
                       {branch.gameRomBranch.region.name}
