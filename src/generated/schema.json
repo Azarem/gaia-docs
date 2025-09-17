@@ -1,0 +1,2836 @@
+{
+  "source": {
+    "url": "https://raw.githubusercontent.com/Azarem/gaialabs-platform/refs/heads/main/apps/gaia-api/prisma/schema.prisma",
+    "fetchedAt": "2025-09-16T23:00:25.290Z"
+  },
+  "models": [
+    {
+      "name": "Platform",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": true,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@unique",
+          "isRelationType": false
+        },
+        {
+          "name": "meta",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        },
+        {
+          "name": "branches",
+          "type": "PlatformBranch",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        },
+        {
+          "name": "regions",
+          "type": "Region",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        },
+        {
+          "name": "developers",
+          "type": "Developer",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        },
+        {
+          "name": "games",
+          "type": "Game",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        }
+      ],
+      "uniques": [],
+      "indexes": []
+    },
+    {
+      "name": "PlatformBranch",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "version",
+          "type": "Int",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "isActive",
+          "type": "Boolean",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "platform",
+          "type": "Platform",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "platformId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [platformId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "platformId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "addressingModes",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "instructionSet",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "vectors",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        },
+        {
+          "name": "gameBranches",
+          "type": "GameRomBranch",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        }
+      ],
+      "uniques": [
+        {
+          "fields": [
+            "platformId",
+            "name"
+          ]
+        },
+        {
+          "fields": [
+            "platformId",
+            "version"
+          ]
+        },
+        {
+          "fields": [
+            "platformId",
+            "isActive"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "platformId",
+            "name"
+          ]
+        },
+        {
+          "fields": [
+            "platformId",
+            "version"
+          ]
+        },
+        {
+          "fields": [
+            "platformId",
+            "isActive"
+          ]
+        },
+        {
+          "fields": [
+            "platformId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Developer",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "meta",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "platform",
+          "type": "Platform",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "platformId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [platformId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "platformId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "games",
+          "type": "Game",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        }
+      ],
+      "uniques": [
+        {
+          "fields": [
+            "platformId",
+            "name"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "platformId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Region",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "meta",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "platform",
+          "type": "Platform",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "platformId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [platformId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "platformId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        },
+        {
+          "name": "roms",
+          "type": "GameRom",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        }
+      ],
+      "uniques": [
+        {
+          "fields": [
+            "platformId",
+            "name"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "platformId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Game",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "meta",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "platform",
+          "type": "Platform",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "platformId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [platformId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "platformId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "developer",
+          "type": "Developer",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "developerId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [developerId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "developerId",
+          "type": "String",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        },
+        {
+          "name": "gameRoms",
+          "type": "GameRom",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        },
+        {
+          "name": "baseRoms",
+          "type": "BaseRom",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        },
+        {
+          "name": "projects",
+          "type": "Project",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        }
+      ],
+      "uniques": [
+        {
+          "fields": [
+            "platformId",
+            "name"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "platformId"
+          ]
+        },
+        {
+          "fields": [
+            "developerId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GameRom",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "crc",
+          "type": "Int",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": true,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@unique",
+          "isRelationType": false
+        },
+        {
+          "name": "meta",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "game",
+          "type": "Game",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "gameId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [gameId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "gameId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "region",
+          "type": "Region",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "regionId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [regionId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "regionId",
+          "type": "String",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        },
+        {
+          "name": "branches",
+          "type": "GameRomBranch",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        },
+        {
+          "name": "baseRoms",
+          "type": "BaseRom",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        }
+      ],
+      "uniques": [],
+      "indexes": [
+        {
+          "fields": [
+            "gameId"
+          ]
+        },
+        {
+          "fields": [
+            "regionId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GameRomBranch",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "version",
+          "type": "Int",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "isActive",
+          "type": "Boolean",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "gameRom",
+          "type": "GameRom",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "gameRomId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [gameRomId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "gameRomId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "platformBranch",
+          "type": "PlatformBranch",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "platformBranchId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [platformBranchId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "platformBranchId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "coplib",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "config",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "files",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "blocks",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "fixups",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "types",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        },
+        {
+          "name": "baseBranches",
+          "type": "BaseRomBranch",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        }
+      ],
+      "uniques": [
+        {
+          "fields": [
+            "gameRomId",
+            "name"
+          ]
+        },
+        {
+          "fields": [
+            "gameRomId",
+            "version"
+          ]
+        },
+        {
+          "fields": [
+            "gameRomId",
+            "isActive"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "gameRomId",
+            "name"
+          ]
+        },
+        {
+          "fields": [
+            "gameRomId",
+            "version"
+          ]
+        },
+        {
+          "fields": [
+            "gameRomId",
+            "isActive"
+          ]
+        },
+        {
+          "fields": [
+            "gameRomId"
+          ]
+        },
+        {
+          "fields": [
+            "platformBranchId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BaseRom",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": true,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@unique",
+          "isRelationType": false
+        },
+        {
+          "name": "game",
+          "type": "Game",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "gameId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [gameId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "gameId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "gameRom",
+          "type": "GameRom",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "gameRomId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [gameRomId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "gameRomId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        },
+        {
+          "name": "branches",
+          "type": "BaseRomBranch",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        },
+        {
+          "name": "files",
+          "type": "BaseRomFile",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        },
+        {
+          "name": "projects",
+          "type": "Project",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        }
+      ],
+      "uniques": [
+        {
+          "fields": [
+            "gameId",
+            "name"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "gameId",
+            "name"
+          ]
+        },
+        {
+          "fields": [
+            "gameId"
+          ]
+        },
+        {
+          "fields": [
+            "gameRomId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BaseRomBranch",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "version",
+          "type": "Int",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "isActive",
+          "type": "Boolean",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "baseRom",
+          "type": "BaseRom",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "baseRomId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [baseRomId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "baseRomId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "gameRomBranch",
+          "type": "GameRomBranch",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "gameRomBranchId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [gameRomBranchId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "gameRomBranchId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "projectBranches",
+          "type": "ProjectBranch",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        },
+        {
+          "name": "fileCrcs",
+          "type": "Int",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        }
+      ],
+      "uniques": [
+        {
+          "fields": [
+            "baseRomId",
+            "name"
+          ]
+        },
+        {
+          "fields": [
+            "baseRomId",
+            "version"
+          ]
+        },
+        {
+          "fields": [
+            "baseRomId",
+            "isActive"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "baseRomId",
+            "name"
+          ]
+        },
+        {
+          "fields": [
+            "baseRomId",
+            "version"
+          ]
+        },
+        {
+          "fields": [
+            "baseRomId",
+            "isActive"
+          ]
+        },
+        {
+          "fields": [
+            "baseRomId"
+          ]
+        },
+        {
+          "fields": [
+            "gameRomBranchId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BaseRomFile",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "version",
+          "type": "Int",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "crc",
+          "type": "Int",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "meta",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "baseRom",
+          "type": "BaseRom",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "baseRomId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [baseRomId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "baseRomId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "data",
+          "type": "Bytes",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        }
+      ],
+      "uniques": [
+        {
+          "fields": [
+            "baseRomId",
+            "name",
+            "version"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "baseRomId",
+            "crc"
+          ]
+        },
+        {
+          "fields": [
+            "baseRomId"
+          ]
+        },
+        {
+          "fields": [
+            "crc"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Project",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": true,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@unique",
+          "isRelationType": false
+        },
+        {
+          "name": "meta",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "game",
+          "type": "Game",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "gameId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [gameId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "gameId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "baseRom",
+          "type": "BaseRom",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "baseRomId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [baseRomId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "baseRomId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        },
+        {
+          "name": "files",
+          "type": "ProjectFile",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        },
+        {
+          "name": "branches",
+          "type": "ProjectBranch",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": true
+        }
+      ],
+      "uniques": [],
+      "indexes": [
+        {
+          "fields": [
+            "name"
+          ]
+        },
+        {
+          "fields": [
+            "gameId"
+          ]
+        },
+        {
+          "fields": [
+            "baseRomId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ProjectBranch",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "version",
+          "type": "Int",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "isActive",
+          "type": "Boolean",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "notes",
+          "type": "String",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "project",
+          "type": "Project",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "projectId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [projectId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "projectId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "baseRomBranch",
+          "type": "BaseRomBranch",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "baseRomBranchId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [baseRomBranchId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "baseRomBranchId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "fileCrcs",
+          "type": "Int",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "modules",
+          "type": "Json",
+          "isOptional": false,
+          "isList": true,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        }
+      ],
+      "uniques": [
+        {
+          "fields": [
+            "projectId",
+            "name"
+          ]
+        },
+        {
+          "fields": [
+            "projectId",
+            "version"
+          ]
+        },
+        {
+          "fields": [
+            "projectId",
+            "isActive"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "projectId",
+            "name"
+          ]
+        },
+        {
+          "fields": [
+            "projectId",
+            "version"
+          ]
+        },
+        {
+          "fields": [
+            "projectId",
+            "isActive"
+          ]
+        },
+        {
+          "fields": [
+            "projectId"
+          ]
+        },
+        {
+          "fields": [
+            "baseRomBranchId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ProjectFile",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": true,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "cuid()",
+            "relation": null
+          },
+          "rawAttributes": "@id @default(cuid())",
+          "isRelationType": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "module",
+          "type": "String",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "version",
+          "type": "Int",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "crc",
+          "type": "Int",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "meta",
+          "type": "Json",
+          "isOptional": true,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "project",
+          "type": "Project",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": {
+              "name": null,
+              "fields": [
+                "projectId"
+              ],
+              "references": [
+                "id"
+              ]
+            }
+          },
+          "rawAttributes": "@relation(fields: [projectId], references: [id])",
+          "isRelationType": true
+        },
+        {
+          "name": "projectId",
+          "type": "String",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "data",
+          "type": "Bytes",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": null,
+          "isRelationType": false
+        },
+        {
+          "name": "createdAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": false,
+            "defaultValue": "now()",
+            "relation": null
+          },
+          "rawAttributes": "@default(now())",
+          "isRelationType": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "DateTime",
+          "isOptional": false,
+          "isList": false,
+          "attributes": {
+            "isId": false,
+            "isUnique": false,
+            "isUpdatedAt": true,
+            "defaultValue": null,
+            "relation": null
+          },
+          "rawAttributes": "@updatedAt",
+          "isRelationType": false
+        }
+      ],
+      "uniques": [
+        {
+          "fields": [
+            "projectId",
+            "module",
+            "name",
+            "version"
+          ]
+        },
+        {
+          "fields": [
+            "projectId",
+            "module",
+            "crc"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "projectId",
+            "crc"
+          ]
+        },
+        {
+          "fields": [
+            "projectId"
+          ]
+        }
+      ]
+    }
+  ]
+}

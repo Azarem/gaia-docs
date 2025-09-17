@@ -1,0 +1,20 @@
+{
+  "name": "GaiaLabs Documentation",
+  "short_name": "GaiaDocs",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111648",
+  "description": "Comprehensive documentation for GaiaLabs ROM analysis tools, data structures, and assembly generation.",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
+
+

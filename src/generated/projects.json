@@ -1,0 +1,351 @@
+{
+  "source": {
+    "url": "https://adwobxutnpmjbmhdxrzx.supabase.co/rest/v1/Project",
+    "fetchedAt": "2025-09-16T23:00:26.863Z"
+  },
+  "projects": [
+    {
+      "id": "cmfmf4vbv002yza34yjzv0w0l",
+      "name": "Illusion of Gaia: Retranslated",
+      "slug": "Illusion%20of%20Gaia%3A%20Retranslated",
+      "meta": {
+        "currentVersion": "1.41"
+      },
+      "gameId": "cmfmf4tgx0008za34pu5l6fna",
+      "baseRomId": "cmfmf4tz4000eza34y2ahiivp",
+      "createdAt": "2025-09-16T10:37:02.492",
+      "updatedAt": "2025-09-16T10:37:02.492",
+      "activeBranch": {
+        "id": "cmfmf4yve009kza3454hihzgh",
+        "name": "1.41",
+        "version": 1,
+        "modules": [
+          {
+            "name": "🎨 Title Screen",
+            "groups": [
+              {
+                "name": null,
+                "options": [
+                  {
+                    "name": "NA Original",
+                    "module": null,
+                    "description": "The original North American title screen"
+                  },
+                  {
+                    "name": "Enhanced",
+                    "module": "title-enhanced",
+                    "default": true,
+                    "description": "Enhanced NA title screen with JP comet background"
+                  },
+                  {
+                    "name": "Hybrid",
+                    "module": "title-alternate",
+                    "description": "Hybrid JP title screen with NA title text"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "🏯 JP Content",
+            "groups": [
+              {
+                "name": "Edward Castle Background",
+                "options": [
+                  {
+                    "name": "NA",
+                    "module": null
+                  },
+                  {
+                    "name": "JP",
+                    "module": "jp-edward-mountains",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "Itory Background",
+                "options": [
+                  {
+                    "name": "NA",
+                    "module": null
+                  },
+                  {
+                    "name": "JP",
+                    "module": "jp-itory-mountains",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "Great Wall Background",
+                "options": [
+                  {
+                    "name": "NA",
+                    "module": null
+                  },
+                  {
+                    "name": "JP",
+                    "module": "jp-wall-dunes",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "Fountain Color",
+                "options": [
+                  {
+                    "name": "NA (Brown)",
+                    "module": null
+                  },
+                  {
+                    "name": "JP (Red)",
+                    "module": "red-fountain",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "Viper Boss",
+                "options": [
+                  {
+                    "name": "NA",
+                    "module": null,
+                    "default": true
+                  },
+                  {
+                    "name": "JP",
+                    "module": "jp-viper"
+                  }
+                ]
+              },
+              {
+                "name": "Church Cross/Statue",
+                "options": [
+                  {
+                    "name": "NA (Statue)",
+                    "module": null
+                  },
+                  {
+                    "name": "JP (Cross)",
+                    "module": "jp-church-cross",
+                    "default": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "⚡ Quality of Life",
+            "groups": [
+              {
+                "name": "Prologue / Overworld Text",
+                "options": [
+                  {
+                    "name": "Enhanced",
+                    "module": "enhanced-prologue-text",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "Epilogue Text (Comet scene)",
+                "options": [
+                  {
+                    "name": "Original (Boxed)",
+                    "module": null
+                  },
+                  {
+                    "name": "No dialog box/borders",
+                    "module": "enhanced-epilogue-text",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "Herb Heals",
+                "options": [
+                  {
+                    "name": "+8 HP",
+                    "module": null
+                  },
+                  {
+                    "name": "Full HP",
+                    "module": "full-health-herb",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "Pyramid Elevator Speed",
+                "options": [
+                  {
+                    "name": "1x",
+                    "module": null
+                  },
+                  {
+                    "name": "2x",
+                    "module": "pyramid-elevator-speed",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "Pyramid Portal Exit",
+                "options": [
+                  {
+                    "name": "Original",
+                    "module": null
+                  },
+                  {
+                    "name": "Altered",
+                    "module": "pyramid-portal-exit",
+                    "default": true,
+                    "description": "Portals will take you to the lower main area. Lower portal brings you to the top."
+                  }
+                ]
+              },
+              {
+                "name": "Shortcut from Mines to Freejia",
+                "options": [
+                  {
+                    "name": "No",
+                    "module": null
+                  },
+                  {
+                    "name": "Yes",
+                    "module": "freejia-shortcut",
+                    "default": true,
+                    "description": "Sam will offer to take you to Freejia, skipping the return trip."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "📚 Cut Content",
+            "groups": [
+              {
+                "name": "Sky Delivery Man",
+                "options": [
+                  {
+                    "name": "Enable",
+                    "module": null,
+                    "default": true,
+                    "description": "The Sky Deliveryman will appear in Watermia, South Cape, and Freejia."
+                  }
+                ]
+              },
+              {
+                "name": "Blue Journal",
+                "options": [
+                  {
+                    "name": "Disable",
+                    "module": null
+                  },
+                  {
+                    "name": "Enable",
+                    "module": "blue-journal",
+                    "default": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "✨ Extras",
+            "groups": [
+              {
+                "name": "Thankful Flower",
+                "options": [
+                  {
+                    "name": "Disable",
+                    "module": null
+                  },
+                  {
+                    "name": "Enable",
+                    "module": "thankful-flower",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "South Cape Return",
+                "options": [
+                  {
+                    "name": "Disable",
+                    "module": null
+                  },
+                  {
+                    "name": "Enable",
+                    "module": "south-cape-return",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "Crystal Ring Palette",
+                "options": [
+                  {
+                    "name": "Original",
+                    "module": null
+                  },
+                  {
+                    "name": "New",
+                    "module": "crystal-ring-palette",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "Border Graphics",
+                "options": [
+                  {
+                    "name": "Enhanced",
+                    "module": null,
+                    "default": true
+                  },
+                  {
+                    "name": "Plain",
+                    "module": "plain-borders"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "fileCount": 118,
+        "createdAt": "2025-09-16T10:37:07.082",
+        "updatedAt": "2025-09-16T10:37:07.082",
+        "baseRomBranch": {
+          "id": "cmfmf4v9x002wza34ccgpjj58",
+          "name": "2.0",
+          "version": 1,
+          "fileCount": 44
+        },
+        "gameRomBranch": {
+          "id": "cmfmf4tn9000cza34rhpxv1fp",
+          "name": "1.0",
+          "version": 1,
+          "game": {
+            "id": "cmfmf4tgx0008za34pu5l6fna",
+            "name": "Illusion of Gaia"
+          },
+          "region": {
+            "id": "cmfmf4td70004za34671tza75",
+            "name": "US"
+          }
+        },
+        "platformBranch": {
+          "id": "cmfmf4tae0002za34qc6ir6co",
+          "name": "1.0",
+          "version": 1,
+          "platform": {
+            "id": "cmfmf4t8c0000za347p07stzi",
+            "name": "SNES"
+          }
+        }
+      }
+    }
+  ]
+}

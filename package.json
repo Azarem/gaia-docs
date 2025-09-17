@@ -1,0 +1,46 @@
+{
+  "name": "gaia-docs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static documentation site for GaiaLabs ROM analysis and data structures",
+  "scripts": {
+    "dev": "next dev -p 3002",
+    "build": "next build",
+    "start": "next start -p 3002",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "export": "next build && next export",
+    "generate:schema": "node scripts/generate-schema-docs.mjs",
+    "generate:projects": "node scripts/generate-projects.mjs",
+    "generate:entities": "node scripts/generate-entities.mjs",
+    "generate:gameroms": "node scripts/generate-gameroms.mjs",
+    "prebuild": "node scripts/generate-schema-docs.mjs",
+    "preexport": "node scripts/generate-schema-docs.mjs",
+    "predev": "node scripts/generate-schema-docs.mjs && node scripts/generate-projects.mjs && node scripts/generate-entities.mjs && node scripts/generate-gameroms.mjs"
+  },
+  "dependencies": {
+    "@gaialabs/shared": "^0.1.4",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tailwindcss/postcss": "^4.1.13",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.544.0",
+    "next": "^15.5.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@mrleebo/prisma-ast": "^0.13.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^22.13.14",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.35.0",
+    "eslint-config-next": "^15.5.3",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
+  }
+}
