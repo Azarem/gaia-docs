@@ -92,14 +92,22 @@ async function fetchActiveProjectBranch(projectId) {
   let platformBranch = null;
   let platform = null;
   if (gameRomBranch?.platformBranchId) {
-    const pb2Url = `${SUPABASE_URL}/rest/v1/PlatformBranch?id=eq.${gameRomBranch.platformBranchId}&select=id,name,version,isActive,notes,platformId`;
+    const pb2Url = `${SUPABASE_URL}/rest/v1/PlatformBranch?id=eq.${gameRomBranch.platformBranchId}&select=id,name,version,isActive,notes,platformId,createdAt,updatedAt`;
     const pb2Rows = await fetchJSON(pb2Url);
     platformBranch = pb2Rows && pb2Rows[0];
     if (platformBranch?.platformId) {
-      const pUrl = `${SUPABASE_URL}/rest/v1/Platform?id=eq.${platformBranch.platformId}&select=id,name`;
+      const pUrl = `${SUPABASE_URL}/rest/v1/Platform?id=eq.${platformBranch.platformId}&select=id,name,meta`;
       const pRows = await fetchJSON(pUrl);
       platform = pRows && pRows[0];
     }
+  }
+
+  // Step 6: load BaseRom entity details
+  let baseRom = null;
+  if (baseRomBranch?.baseRomId) {
+    const brUrl = `${SUPABASE_URL}/rest/v1/BaseRom?id=eq.${baseRomBranch.baseRomId}&select=id,name,gameId`;
+    const brRows = await fetchJSON(brUrl);
+    baseRom = brRows && brRows[0];
   }
 
   return {
@@ -116,6 +124,14 @@ async function fetchActiveProjectBranch(projectId) {
           name: baseRomBranch.name ?? null,
           version: baseRomBranch.version ?? null,
           fileCount: Array.isArray(baseRomBranch.fileCrcs) ? baseRomBranch.fileCrcs.length : 0,
+          createdAt: baseRomBranch.createdAt,
+          updatedAt: baseRomBranch.updatedAt,
+          baseRom: baseRom ? { 
+            id: baseRom.id, 
+            name: baseRom.name, 
+            slug: slugify(baseRom.name), 
+            gameId: baseRom.gameId 
+          } : null,
         }
       : null,
     gameRomBranch: gameRomBranch
@@ -132,7 +148,15 @@ async function fetchActiveProjectBranch(projectId) {
           id: platformBranch.id,
           name: platformBranch.name ?? null,
           version: platformBranch.version ?? null,
-          platform: platform ? { id: platform.id, name: platform.name } : null,
+          notes: platformBranch.notes ?? null,
+          createdAt: platformBranch.createdAt,
+          updatedAt: platformBranch.updatedAt,
+          platform: platform ? { 
+            id: platform.id, 
+            name: platform.name, 
+            slug: slugify(platform.name), 
+            meta: platform.meta 
+          } : null,
         }
       : null,
   };

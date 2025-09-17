@@ -1,7 +1,7 @@
 {
   "source": {
     "table": "Platform",
-    "fetchedAt": "2025-09-16T23:00:27.254Z"
+    "fetchedAt": "2025-09-17T04:50:24.256Z"
   },
   "platforms": {
     "snes": {
@@ -15,7 +15,636 @@
         "id": "cmfmf4tae0002za34qc6ir6co",
         "name": "1.0",
         "version": 1,
-        "notes": []
+        "notes": [],
+        "addressingModes": {
+          "Stack": {
+            "size": 1,
+            "shorthand": "stk",
+            "parseRegex": null,
+            "operandType": null,
+            "formatString": null
+          },
+          "Implied": {
+            "size": 1,
+            "shorthand": "imp",
+            "parseRegex": null,
+            "operandType": null,
+            "formatString": null
+          },
+          "Absolute": {
+            "size": 3,
+            "shorthand": "abs",
+            "parseRegex": "^\\$([A-Fa-f0-9]{4}|&[A-Za-z0-9-+_]+)$",
+            "operandType": "Absolute",
+            "formatString": "${0:X4}"
+          },
+          "BlockMove": {
+            "size": 3,
+            "shorthand": "src_dest",
+            "parseRegex": "^#\\$([A-Fa-f0-9]{2}|\\^[A-Za-z0-9-+_]+),\\s?#\\$([A-Fa-f0-9]{2}|\\^[A-Za-z0-9-+_]+)$",
+            "operandType": "BankPair",
+            "formatString": "#${0:X2}, #${1:X2}"
+          },
+          "Immediate": {
+            "size": 2,
+            "shorthand": "imm",
+            "parseRegex": "^#(\\$[A-Fa-f0-9]{2,4}|\\$?[&^*][A-Za-z0-9-+_]+)$",
+            "operandType": "Immediate",
+            "formatString": "#${0:X2}"
+          },
+          "DirectPage": {
+            "size": 2,
+            "shorthand": "dp",
+            "parseRegex": "^\\$([A-Fa-f0-9]{2})$",
+            "operandType": "Direct",
+            "formatString": "${0:X2}"
+          },
+          "PCRelative": {
+            "size": 2,
+            "shorthand": "rel",
+            "parseRegex": "^([A-Za-z_][A-Za-z0-9_]*|\\$[A-Fa-f0-9]{2})$",
+            "operandType": "Label",
+            "formatString": "{0}"
+          },
+          "Accumulator": {
+            "size": 1,
+            "shorthand": "acc",
+            "parseRegex": null,
+            "operandType": null,
+            "formatString": null
+          },
+          "AbsoluteLong": {
+            "size": 4,
+            "shorthand": "long",
+            "parseRegex": "^\\$([A-Fa-f0-9]{6}|\\@[A-Za-z0-9-+_]+)$",
+            "operandType": "AbsoluteLong",
+            "formatString": "${0:X6}"
+          },
+          "StackRelative": {
+            "size": 2,
+            "shorthand": "stkr",
+            "parseRegex": "^\\$([A-Fa-f0-9]{2}),\\s?[Ss]$",
+            "operandType": "Byte",
+            "formatString": "${0:X2}, S"
+          },
+          "PCRelativeLong": {
+            "size": 3,
+            "shorthand": "rel16",
+            "parseRegex": "^([A-Za-z_][A-Za-z0-9_]*|\\$[A-Fa-f0-9]{4})$",
+            "operandType": "Label",
+            "formatString": "{0}"
+          },
+          "StackInterrupt": {
+            "size": 2,
+            "shorthand": "stk_int",
+            "parseRegex": "^#\\$([A-Fa-f0-9]{2})$",
+            "operandType": "InterruptVector",
+            "formatString": "#${0:X2}"
+          },
+          "AbsoluteIndexedX": {
+            "size": 3,
+            "shorthand": "abs_x",
+            "parseRegex": "^(\\$[A-Fa-f0-9]{4}|\\$?&[A-Za-z0-9-+_]+),\\s?[Xx]$",
+            "operandType": "Absolute",
+            "formatString": "${0:X4}, X"
+          },
+          "AbsoluteIndexedY": {
+            "size": 3,
+            "shorthand": "abs_y",
+            "parseRegex": "^(\\$[A-Fa-f0-9]{4}|\\$?&[A-Za-z0-9-+_]+),\\s?[Yy]$",
+            "operandType": "Absolute",
+            "formatString": "${0:X4}, Y"
+          },
+          "AbsoluteIndirect": {
+            "size": 3,
+            "shorthand": "abs_ind",
+            "parseRegex": "^\\((\\$[A-Fa-f0-9]{4}|\\$?&[A-Za-z0-9-+_]+)\\)$",
+            "operandType": "Absolute",
+            "formatString": "(${0})"
+          },
+          "DirectPageIndexedX": {
+            "size": 2,
+            "shorthand": "dp_x",
+            "parseRegex": "^\\$([A-Fa-f0-9]{2}),\\s?[Xx]$",
+            "operandType": "Direct",
+            "formatString": "${0:X2}, X"
+          },
+          "DirectPageIndexedY": {
+            "size": 2,
+            "shorthand": "dp_y",
+            "parseRegex": "^\\$([A-Fa-f0-9]{2}),\\s?[Yy]$",
+            "operandType": "Direct",
+            "formatString": "${0:X2}, Y"
+          },
+          "DirectPageIndirect": {
+            "size": 2,
+            "shorthand": "dp_ind",
+            "parseRegex": "^\\(\\$([A-Fa-f0-9]{2})\\)$",
+            "operandType": "Direct",
+            "formatString": "(${0:X2})"
+          },
+          "AbsoluteIndirectLong": {
+            "size": 3,
+            "shorthand": "abs_indl",
+            "parseRegex": "^\\[(\\$[A-Fa-f0-9]{4}|\\$?&[A-Za-z0-9-+_]+)\\]$",
+            "operandType": "Absolute",
+            "formatString": "[${0}]"
+          },
+          "AbsoluteLongIndexedX": {
+            "size": 4,
+            "shorthand": "long_x",
+            "parseRegex": "^(\\$[A-Fa-f0-9]{6}|\\$?@[A-Za-z0-9-+_]+),\\s?[Xx]$",
+            "operandType": "AbsoluteLong",
+            "formatString": "${0:X6}, X"
+          },
+          "DirectPageIndirectLong": {
+            "size": 2,
+            "shorthand": "dp_indl",
+            "parseRegex": "^\\[\\$([A-Fa-f0-9]{2})\\]$",
+            "operandType": "Direct",
+            "formatString": "[${0:X2}]"
+          },
+          "AbsoluteIndexedIndirect": {
+            "size": 3,
+            "shorthand": "abs_x_ind",
+            "parseRegex": "^\\((\\$[A-Fa-f0-9]{4}|\\$?&[A-Za-z0-9-+_]+),\\s*[Xx]\\)$",
+            "operandType": "Absolute",
+            "formatString": "(${0}, X)"
+          },
+          "DirectPageIndexedIndirectX": {
+            "size": 2,
+            "shorthand": "dp_x_ind",
+            "parseRegex": "^\\(\\$([A-Fa-f0-9]{2}),\\s?[Xx]\\)$",
+            "operandType": "Direct",
+            "formatString": "(${0:X2}, X)"
+          },
+          "DirectPageIndirectIndexedY": {
+            "size": 2,
+            "shorthand": "dp_ind_y",
+            "parseRegex": "^\\(\\$([A-Fa-f0-9]{2})\\),\\s?[Yy]$",
+            "operandType": "Direct",
+            "formatString": "(${0:X2}), Y"
+          },
+          "StackRelativeIndirectIndexedY": {
+            "size": 2,
+            "shorthand": "stkr_ind_y",
+            "parseRegex": "^\\(\\$([A-Fa-f0-9]{2}),\\s?[Ss]\\),\\s?[Yy]$",
+            "operandType": "Byte",
+            "formatString": "(${0:X2}, S), Y"
+          },
+          "DirectPageIndirectLongIndexedY": {
+            "size": 2,
+            "shorthand": "dp_indl_y",
+            "parseRegex": "^\\[\\$([A-Fa-f0-9]{2})\\],\\s?[Yy]$",
+            "operandType": "Direct",
+            "formatString": "[${0:X2}], Y"
+          }
+        },
+        "instructionSet": {
+          "ADC": {
+            "Absolute": 109,
+            "Immediate": 105,
+            "DirectPage": 101,
+            "AbsoluteLong": 111,
+            "StackRelative": 99,
+            "AbsoluteIndexedX": 125,
+            "AbsoluteIndexedY": 121,
+            "DirectPageIndexedX": 117,
+            "DirectPageIndirect": 114,
+            "AbsoluteLongIndexedX": 127,
+            "DirectPageIndirectLong": 103,
+            "DirectPageIndexedIndirectX": 97,
+            "DirectPageIndirectIndexedY": 113,
+            "StackRelativeIndirectIndexedY": 115,
+            "DirectPageIndirectLongIndexedY": 119
+          },
+          "AND": {
+            "Absolute": 45,
+            "Immediate": 41,
+            "DirectPage": 37,
+            "AbsoluteLong": 47,
+            "StackRelative": 35,
+            "AbsoluteIndexedX": 61,
+            "AbsoluteIndexedY": 57,
+            "DirectPageIndexedX": 53,
+            "DirectPageIndirect": 50,
+            "AbsoluteLongIndexedX": 63,
+            "DirectPageIndirectLong": 39,
+            "DirectPageIndexedIndirectX": 33,
+            "DirectPageIndirectIndexedY": 49,
+            "StackRelativeIndirectIndexedY": 51,
+            "DirectPageIndirectLongIndexedY": 55
+          },
+          "ASL": {
+            "Absolute": 14,
+            "DirectPage": 6,
+            "Accumulator": 10,
+            "AbsoluteIndexedX": 30,
+            "DirectPageIndexedX": 22
+          },
+          "BCC": {
+            "PCRelative": 144
+          },
+          "BCS": {
+            "PCRelative": 176
+          },
+          "BEQ": {
+            "PCRelative": 240
+          },
+          "BIT": {
+            "Absolute": 44,
+            "Immediate": 137,
+            "DirectPage": 36,
+            "AbsoluteIndexedX": 60,
+            "DirectPageIndexedX": 52
+          },
+          "BMI": {
+            "PCRelative": 48
+          },
+          "BNE": {
+            "PCRelative": 208
+          },
+          "BPL": {
+            "PCRelative": 16
+          },
+          "BRA": {
+            "PCRelative": 128
+          },
+          "BRK": {
+            "StackInterrupt": 0
+          },
+          "BRL": {
+            "PCRelativeLong": 130
+          },
+          "BVC": {
+            "PCRelative": 80
+          },
+          "BVS": {
+            "PCRelative": 112
+          },
+          "CLC": {
+            "Implied": 24
+          },
+          "CLD": {
+            "Implied": 216
+          },
+          "CLI": {
+            "Implied": 88
+          },
+          "CLV": {
+            "Implied": 184
+          },
+          "CMP": {
+            "Absolute": 205,
+            "Immediate": 201,
+            "DirectPage": 197,
+            "AbsoluteLong": 207,
+            "StackRelative": 195,
+            "AbsoluteIndexedX": 221,
+            "AbsoluteIndexedY": 217,
+            "DirectPageIndexedX": 213,
+            "DirectPageIndirect": 210,
+            "AbsoluteLongIndexedX": 223,
+            "DirectPageIndirectLong": 199,
+            "DirectPageIndexedIndirectX": 193,
+            "DirectPageIndirectIndexedY": 209,
+            "StackRelativeIndirectIndexedY": 211,
+            "DirectPageIndirectLongIndexedY": 215
+          },
+          "COP": {
+            "StackInterrupt": 2
+          },
+          "CPX": {
+            "Absolute": 236,
+            "Immediate": 224,
+            "DirectPage": 228
+          },
+          "CPY": {
+            "Absolute": 204,
+            "Immediate": 192,
+            "DirectPage": 196
+          },
+          "DEC": {
+            "Absolute": 206,
+            "DirectPage": 198,
+            "Accumulator": 58,
+            "AbsoluteIndexedX": 222,
+            "DirectPageIndexedX": 214
+          },
+          "DEX": {
+            "Implied": 202
+          },
+          "DEY": {
+            "Implied": 136
+          },
+          "EOR": {
+            "Absolute": 77,
+            "Immediate": 73,
+            "DirectPage": 69,
+            "AbsoluteLong": 79,
+            "StackRelative": 67,
+            "AbsoluteIndexedX": 93,
+            "AbsoluteIndexedY": 89,
+            "DirectPageIndexedX": 85,
+            "DirectPageIndirect": 82,
+            "AbsoluteLongIndexedX": 95,
+            "DirectPageIndirectLong": 71,
+            "DirectPageIndexedIndirectX": 65,
+            "DirectPageIndirectIndexedY": 81,
+            "StackRelativeIndirectIndexedY": 83,
+            "DirectPageIndirectLongIndexedY": 87
+          },
+          "INC": {
+            "Absolute": 238,
+            "DirectPage": 230,
+            "Accumulator": 26,
+            "AbsoluteIndexedX": 254,
+            "DirectPageIndexedX": 246
+          },
+          "INX": {
+            "Implied": 232
+          },
+          "INY": {
+            "Implied": 200
+          },
+          "JML": {
+            "AbsoluteLong": 92,
+            "AbsoluteIndirectLong": 220
+          },
+          "JMP": {
+            "Absolute": 76,
+            "AbsoluteIndirect": 108,
+            "AbsoluteIndexedIndirect": 124
+          },
+          "JSL": {
+            "AbsoluteLong": 34
+          },
+          "JSR": {
+            "Absolute": 32,
+            "AbsoluteIndexedIndirect": 252
+          },
+          "LDA": {
+            "Absolute": 173,
+            "Immediate": 169,
+            "DirectPage": 165,
+            "AbsoluteLong": 175,
+            "StackRelative": 163,
+            "AbsoluteIndexedX": 189,
+            "AbsoluteIndexedY": 185,
+            "DirectPageIndexedX": 181,
+            "DirectPageIndirect": 178,
+            "AbsoluteLongIndexedX": 191,
+            "DirectPageIndirectLong": 167,
+            "DirectPageIndexedIndirectX": 161,
+            "DirectPageIndirectIndexedY": 177,
+            "StackRelativeIndirectIndexedY": 179,
+            "DirectPageIndirectLongIndexedY": 183
+          },
+          "LDX": {
+            "Absolute": 174,
+            "Immediate": 162,
+            "DirectPage": 166,
+            "AbsoluteIndexedY": 190,
+            "DirectPageIndexedY": 182
+          },
+          "LDY": {
+            "Absolute": 172,
+            "Immediate": 160,
+            "DirectPage": 164,
+            "AbsoluteIndexedX": 188,
+            "DirectPageIndexedX": 180
+          },
+          "LSR": {
+            "Absolute": 78,
+            "DirectPage": 70,
+            "Accumulator": 74,
+            "AbsoluteIndexedX": 94,
+            "DirectPageIndexedX": 86
+          },
+          "MVN": {
+            "BlockMove": 84
+          },
+          "MVP": {
+            "BlockMove": 68
+          },
+          "NOP": {
+            "Implied": 234
+          },
+          "ORA": {
+            "Absolute": 13,
+            "Immediate": 9,
+            "DirectPage": 5,
+            "AbsoluteLong": 15,
+            "StackRelative": 3,
+            "AbsoluteIndexedX": 29,
+            "AbsoluteIndexedY": 25,
+            "DirectPageIndexedX": 21,
+            "DirectPageIndirect": 18,
+            "AbsoluteLongIndexedX": 31,
+            "DirectPageIndirectLong": 7,
+            "DirectPageIndexedIndirectX": 1,
+            "DirectPageIndirectIndexedY": 17,
+            "StackRelativeIndirectIndexedY": 19,
+            "DirectPageIndirectLongIndexedY": 23
+          },
+          "PEA": {
+            "Absolute": 244
+          },
+          "PEI": {
+            "DirectPageIndirect": 212
+          },
+          "PER": {
+            "PCRelativeLong": 98
+          },
+          "PHA": {
+            "Stack": 72
+          },
+          "PHB": {
+            "Stack": 139
+          },
+          "PHD": {
+            "Stack": 11
+          },
+          "PHK": {
+            "Stack": 75
+          },
+          "PHP": {
+            "Stack": 8
+          },
+          "PHX": {
+            "Stack": 218
+          },
+          "PHY": {
+            "Stack": 90
+          },
+          "PLA": {
+            "Stack": 104
+          },
+          "PLB": {
+            "Stack": 171
+          },
+          "PLD": {
+            "Stack": 43
+          },
+          "PLP": {
+            "Stack": 40
+          },
+          "PLX": {
+            "Stack": 250
+          },
+          "PLY": {
+            "Stack": 122
+          },
+          "REP": {
+            "Immediate": 194
+          },
+          "ROL": {
+            "Absolute": 46,
+            "DirectPage": 38,
+            "Accumulator": 42,
+            "AbsoluteIndexedX": 62,
+            "DirectPageIndexedX": 54
+          },
+          "ROR": {
+            "Absolute": 110,
+            "DirectPage": 102,
+            "Accumulator": 106,
+            "AbsoluteIndexedX": 126,
+            "DirectPageIndexedX": 118
+          },
+          "RTI": {
+            "Stack": 64
+          },
+          "RTL": {
+            "Stack": 107
+          },
+          "RTS": {
+            "Stack": 96
+          },
+          "SBC": {
+            "Absolute": 237,
+            "Immediate": 233,
+            "DirectPage": 229,
+            "AbsoluteLong": 239,
+            "StackRelative": 227,
+            "AbsoluteIndexedX": 253,
+            "AbsoluteIndexedY": 249,
+            "DirectPageIndexedX": 245,
+            "DirectPageIndirect": 242,
+            "AbsoluteLongIndexedX": 255,
+            "DirectPageIndirectLong": 231,
+            "DirectPageIndexedIndirectX": 225,
+            "DirectPageIndirectIndexedY": 241,
+            "StackRelativeIndirectIndexedY": 243,
+            "DirectPageIndirectLongIndexedY": 247
+          },
+          "SEC": {
+            "Implied": 56
+          },
+          "SED": {
+            "Implied": 248
+          },
+          "SEI": {
+            "Implied": 120
+          },
+          "SEP": {
+            "Immediate": 226
+          },
+          "STA": {
+            "Absolute": 141,
+            "DirectPage": 133,
+            "AbsoluteLong": 143,
+            "StackRelative": 131,
+            "AbsoluteIndexedX": 157,
+            "AbsoluteIndexedY": 153,
+            "DirectPageIndexedX": 149,
+            "DirectPageIndirect": 146,
+            "AbsoluteLongIndexedX": 159,
+            "DirectPageIndirectLong": 135,
+            "DirectPageIndexedIndirectX": 129,
+            "DirectPageIndirectIndexedY": 145,
+            "StackRelativeIndirectIndexedY": 147,
+            "DirectPageIndirectLongIndexedY": 151
+          },
+          "STP": {
+            "Implied": 219
+          },
+          "STX": {
+            "Absolute": 142,
+            "DirectPage": 134,
+            "DirectPageIndexedY": 150
+          },
+          "STY": {
+            "Absolute": 140,
+            "DirectPage": 132,
+            "DirectPageIndexedX": 148
+          },
+          "STZ": {
+            "Absolute": 156,
+            "DirectPage": 100,
+            "AbsoluteIndexedX": 158,
+            "DirectPageIndexedX": 116
+          },
+          "TAX": {
+            "Implied": 170
+          },
+          "TAY": {
+            "Implied": 168
+          },
+          "TCD": {
+            "Implied": 91
+          },
+          "TCS": {
+            "Implied": 27
+          },
+          "TDC": {
+            "Implied": 123
+          },
+          "TRB": {
+            "Absolute": 28,
+            "DirectPage": 20
+          },
+          "TSB": {
+            "Absolute": 12,
+            "DirectPage": 4
+          },
+          "TSC": {
+            "Implied": 59
+          },
+          "TSX": {
+            "Implied": 186
+          },
+          "TXA": {
+            "Implied": 138
+          },
+          "TXS": {
+            "Implied": 154
+          },
+          "TXY": {
+            "Implied": 155
+          },
+          "TYA": {
+            "Implied": 152
+          },
+          "TYX": {
+            "Implied": 187
+          },
+          "WAI": {
+            "Implied": 203
+          },
+          "WDM": {
+            "Implied": 66
+          },
+          "XBA": {
+            "Implied": 235
+          },
+          "XCE": {
+            "Implied": 251
+          }
+        },
+        "vectors": {},
+        "createdAt": "2025-09-16T10:36:59.846",
+        "updatedAt": "2025-09-16T10:36:59.846"
       }
     }
   }

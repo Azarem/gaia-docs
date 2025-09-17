@@ -43,7 +43,7 @@ async function genPlatforms() {
   const out = [];
   for (const p of rows) {
     // active PlatformBranch
-    const branches = await fetchJSON(`${SUPABASE_URL}/rest/v1/PlatformBranch?platformId=eq.${p.id}&isActive=eq.true&select=id,name,version,isActive,notes,createdAt,updatedAt`);
+    const branches = await fetchJSON(`${SUPABASE_URL}/rest/v1/PlatformBranch?platformId=eq.${p.id}&isActive=eq.true&select=id,name,version,isActive,notes,addressingModes,instructionSet,vectors,createdAt,updatedAt`);
     const b = branches && branches[0];
     out.push({
       id: p.id,
@@ -53,7 +53,17 @@ async function genPlatforms() {
       createdAt: p.createdAt,
       updatedAt: p.updatedAt,
       activeBranch: b
-        ? { id: b.id, name: b.name ?? null, version: b.version ?? null, notes: b.notes ?? [] }
+        ? { 
+            id: b.id, 
+            name: b.name ?? null, 
+            version: b.version ?? null, 
+            notes: b.notes ?? [],
+            addressingModes: b.addressingModes ?? null,
+            instructionSet: b.instructionSet ?? null,
+            vectors: b.vectors ?? null,
+            createdAt: b.createdAt,
+            updatedAt: b.updatedAt
+          }
         : null,
     });
   }

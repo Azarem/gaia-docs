@@ -1,7 +1,7 @@
 {
   "source": {
     "url": "https://adwobxutnpmjbmhdxrzx.supabase.co/rest/v1/Project",
-    "fetchedAt": "2025-09-16T23:00:26.863Z"
+    "fetchedAt": "2025-09-17T04:50:23.933Z"
   },
   "projects": [
     {
@@ -321,7 +321,15 @@
           "id": "cmfmf4v9x002wza34ccgpjj58",
           "name": "2.0",
           "version": 1,
-          "fileCount": 44
+          "fileCount": 44,
+          "createdAt": "2025-09-16T10:37:02.421",
+          "updatedAt": "2025-09-16T10:37:02.421",
+          "baseRom": {
+            "id": "cmfmf4tz4000eza34y2ahiivp",
+            "name": "GaiaLabs BaseROM",
+            "slug": "gaialabs-baserom",
+            "gameId": "cmfmf4tgx0008za34pu5l6fna"
+          }
         },
         "gameRomBranch": {
           "id": "cmfmf4tn9000cza34rhpxv1fp",
@@ -340,9 +348,14 @@
           "id": "cmfmf4tae0002za34qc6ir6co",
           "name": "1.0",
           "version": 1,
+          "notes": [],
+          "createdAt": "2025-09-16T10:36:59.846",
+          "updatedAt": "2025-09-16T10:36:59.846",
           "platform": {
             "id": "cmfmf4t8c0000za347p07stzi",
-            "name": "SNES"
+            "name": "SNES",
+            "slug": "snes",
+            "meta": {}
           }
         }
       }

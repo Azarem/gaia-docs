@@ -38,6 +38,8 @@ Run via package scripts. All output to `src/generated/`.
 - `generate-projects.mjs`
   - Fetches `Project` rows
   - Attaches active `ProjectBranch` with summary (modules, fileCount, related Game/Region/Platform names)
+  - Enriches with BaseRomBranch, GameRomBranch, and PlatformBranch data including technical fields
+  - Includes audit timestamps (createdAt, updatedAt) for all branch entities
   - Output: `projects.json` (array)
 
 - `generate-entities.mjs`
@@ -47,6 +49,7 @@ Run via package scripts. All output to `src/generated/`.
   - Developers → `developers.json` (slug-keyed map)
   - Regions → `regions.json` (slug-keyed map)
   - Each includes minimal active-branch summary where applicable
+  - Platform branches include technical data: `addressingModes`, `instructionSet`, `vectors`
 
 - `generate-gameroms.mjs`
   - Builds entries for active GameRom branches found via active BaseRomBranches
@@ -84,14 +87,17 @@ Single canonical pattern for games:
 
 Other pages:
 - `/projects` – list using `projects.json`
-- `/projects/{slug}` – project detail incl. active branch summary
+- `/projects/{slug}` – project detail incl. active branch summary with separate cards for Project Branch, Modules, BaseRom Branch, and Platform Branch
+- `/projects/{slug}/modules/{module-slug}` – individual module detail pages with configuration groups and metadata
+- `/assembly/{platform}` – comprehensive technical documentation for platform assembly programming (addressing modes, instruction set, interrupt vectors)
 - `/api` – Supabase REST overview + generated schema index
 - `/api/{model}` – schema model detail from `schema.json`
 
 Note: No `games/[slug]` route to avoid conflicts. Only the nested `{platform}/{game}/{region}` pattern is used.
 
 ## Data Conventions
-- Slugs are `encodeURIComponent(name)`; all lists/params use slugs
+- **Slugs are generated using `scripts/slugify.mjs`** - normalizes to lowercase, removes diacritics, converts non-alphanumeric to hyphens
+- All internal links MUST use slugified values, not `encodeURIComponent(name)`
 - Entity JSON maps are keyed by slug for O(1) lookups
 - Files:
   - `startHex = hex(location)`
@@ -119,6 +125,16 @@ Note: No `games/[slug]` route to avoid conflicts. Only the nested `{platform}/{g
 - When adding new schema-driven docs, parse `schema.json` and preserve attribute semantics.
 - For new entities, use slug-keyed maps to avoid linear scans in page generation.
 
+## Enhanced Project Detail Structure
+Project detail pages (`/projects/{slug}`) now use a card-based layout with clear separation of concerns:
+
+- **Project Branch Card**: Version information, file count, and audit timestamps only
+- **Modules Card**: Full module hierarchy with individual module links to `/projects/{slug}/modules/{module-slug}`
+- **BaseRom Branch Card**: BaseRom info, version, file count, with separate links for Game and Region (routing to games structure)
+- **Platform Branch Card**: Platform information with link to Assembly Information page
+
+Module detail pages show configuration groups with simplified group title display only.
+
 ## Common Tasks
 - Adding a new table/section under GameRom:
   1) Extend `generate-gameroms.mjs` to include transformed table data
@@ -129,10 +145,17 @@ Note: No `games/[slug]` route to avoid conflicts. Only the nested `{platform}/{g
   - Read from their slug maps (`developers.json`, `regions.json`, `platforms.json`)
   - Use slugs for params and static generation
 
+- Adding technical platform documentation:
+  - Technical data is included in platform branches via `generate-entities.mjs`
+  - Assembly documentation is consolidated at `/assembly/{platform}` to avoid route conflicts
+  - Platform pages link to unified assembly documentation instead of separate sections
+
 ## Troubleshooting
 - Route conflicts: Ensure only the nested game path exists. Avoid sibling dynamic segments with different param names at the same level.
+  - **Assembly routes**: Use `/assembly/{platform}` instead of `/games/{platform}/technical-sections` to avoid conflicts with `/games/{platform}/{game}` structure
 - 404 for manifest: Add `public/site.webmanifest` and ensure `metadata.manifest = '/site.webmanifest'`.
 - Blank file ranges: Ensure `location` and `size` are present in source; we compute start/end as above.
+- Module imports: For deeply nested routes, inline the `slugify` function instead of complex relative imports to avoid module resolution issues.
 
 ## Quick Start Commands
 - Dev with data refresh: `pnpm dev` (runs all generators predev)
