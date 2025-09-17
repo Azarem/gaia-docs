@@ -22,7 +22,7 @@ export default function GamesPage() {
 
       <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2">
         {entries.map((e) => (
-          <div key={g.id} className="rounded-lg border border-border p-6">
+          <div key={e.game.slug + '/' + e.region.slug} className="rounded-lg border border-border p-6">
             <h3 className="text-lg font-semibold">
               <Link href={`/${e.path}`} className="hover:underline">{e.game.name} — {e.region.name} ({e.platform.name})</Link>
             </h3>
